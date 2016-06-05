@@ -118,6 +118,15 @@ pending-geokrety-details  1          4798      pending-geokrety-details.xml
 4 database(s).
 ```
 
+### Create initial GeoKrety details xml files
+Finaly, the `geokrety details` should be exported as independant `.xml` files.
+
+```
+> xquery import module namespace gkm = 'https://geokretymap.org'; gkm:write_geokrety_details(doc('geokrety-details')/gkxml/geokrety/geokret)
+
+Query executed in 16160.87 ms.
+```
+
 ## Jekyll (Website)
 The website is generated using Jekyll. This container just generate the content as static files in a shared directory. The static files need to be served using `Nginx` here.
 
