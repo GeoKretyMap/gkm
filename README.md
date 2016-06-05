@@ -55,7 +55,7 @@ services:
   #    - reverseproxy:api.gkm.kumy.org
 ```
 
-## BaseX
+## BaseX (Database)
 BaseX is an xml database. We store all informations in:
 * `geokrety`
 * `geokrety-details`
@@ -117,3 +117,24 @@ pending-geokrety-details  1          4798      pending-geokrety-details.xml
 
 4 database(s).
 ```
+
+## Jekyll (Website)
+The website is generated using Jekyll. This container just generate the content as static files in a shared directory. The static files need to be served using `Nginx` here.
+
+## Nginx (Webserver)
+Nginx is used here as a reverse proxy for the api and standard webserver for the website ; 2 vhosts.
+
+### default vhost
+The website is server by the default vhost.
+
+The container accept the `GKM_API_URL` environment variable. Use it to match your current dev environment or your mirror.
+
+Don't forget to adapt the `docker-compose.yml` file!
+
+### api vhost
+To be accessible, this vhost must start by `api.` (ex: `api.geokretymap.org` or `api.gkm.kumy.org`). The used url must match what defined in `GKM_API_URL`.
+
+## Cron
+The `gkm-api-cron` container is responsible for calling some private admin urls.
+
+This is responsible for maintaining up to date data, or schedule backup and exports.
