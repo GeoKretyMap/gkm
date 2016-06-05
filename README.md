@@ -90,17 +90,19 @@ Password:
 BaseX 8.4.3 [Client]
 Try 'help' to get more information.
 
-> create db geokrety https://api.geokretymap.org/basex/export/geokrety_full-dump.xml
-Database 'geokrety' created in 7085.24 ms.
+> run /srv/scripts/gkm-create.xq
 
-> create db geokrety-details https://api.geokretymap.org/basex/export/geokrety-details.xml
-Database 'geokrety-details' created in 23641.37 ms.
+Query "gkm-create.xq" executed in 16385.78 ms.
 
-> create db pending-geokrety <gkxml><geokrety/><errors/></gkxml>
-Database 'pending-geokrety' created in 16.27 ms.
+```
 
-> create db pending-geokrety-details <gkxml><geokrety/><errors/></gkxml>
-Database 'pending-geokrety-details' created in 14.35 ms.
+### Create initial GeoKrety details xml files
+Finaly, the `geokrety details` should be exported as independant `.xml` files.
+
+```
+> xquery import module namespace gkm = 'https://geokretymap.org'; gkm:write_geokrety_details(doc('geokrety-details')/gkxml/geokrety/geokret)
+
+Query executed in 16160.87 ms.
 ```
 
 ### Verify
@@ -116,15 +118,6 @@ pending-geokrety          1          4785      pending-geokrety.xml
 pending-geokrety-details  1          4798      pending-geokrety-details.xml                                  
 
 4 database(s).
-```
-
-### Create initial GeoKrety details xml files
-Finaly, the `geokrety details` should be exported as independant `.xml` files.
-
-```
-> xquery import module namespace gkm = 'https://geokretymap.org'; gkm:write_geokrety_details(doc('geokrety-details')/gkxml/geokrety/geokret)
-
-Query executed in 16160.87 ms.
 ```
 
 ## Jekyll (Website)
