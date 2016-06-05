@@ -96,15 +96,6 @@ Query "gkm-create.xq" executed in 16385.78 ms.
 
 ```
 
-### Create initial GeoKrety details xml files
-Finaly, the `geokrety details` should be exported as independant `.xml` files.
-
-```
-> xquery import module namespace gkm = 'https://geokretymap.org'; gkm:write_geokrety_details(doc('geokrety-details')/gkxml/geokrety/geokret)
-
-Query executed in 16160.87 ms.
-```
-
 ### Verify
 You should now see the 4 databases:
 
