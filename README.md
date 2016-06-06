@@ -94,6 +94,10 @@ Try 'help' to get more information.
 
 Query "gkm-create.xq" executed in 16385.78 ms.
 
+> run /srv/scripts/gkm-write-details.xq
+
+Query "gkm-write-details.xq" executed in 25689.42 ms.
+
 ```
 
 ### Verify
