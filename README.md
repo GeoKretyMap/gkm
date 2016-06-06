@@ -66,6 +66,8 @@ There is 2 other bases for managing the update queue:
 
 At first start, `BaseX` need to be configured and data imported.
 
+Warning: geokrety-details are exported as distinct files. Ensure your partition has enought `inodes` or use a filesystem without `inodes` limit like `reiserfs`, `btrfs`...
+
 ### Change admin password
 Even if basex ports are not exposed, it is a best practice to always change the root/admin password.
 
@@ -92,11 +94,11 @@ Try 'help' to get more information.
 
 > run /srv/scripts/gkm-create.xq
 
-Query "gkm-create.xq" executed in 16385.78 ms.
+Query "gkm-create.xq" executed in 105064.69 ms.
 
 > run /srv/scripts/gkm-write-details.xq
 
-Query "gkm-write-details.xq" executed in 25689.42 ms.
+Query "gkm-write-details.xq" executed in 52517.14 ms.
 
 ```
 
