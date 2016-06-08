@@ -66,7 +66,7 @@ There is 2 other bases for managing the update queue:
 
 At first start, `BaseX` need to be configured and data imported.
 
-Warning: geokrety-details are exported as distinct files. Ensure your partition has enought `inodes` or use a filesystem without `inodes` limit like `reiserfs`, `btrfs`...
+Warning: geokrety-details are exported as distinct files. Ensure your partition has enought `inodes` or use a filesystem without `inodes` limit like `xfs`, `reiserfs`, `btrfs`...
 
 ### Change admin password
 Even if basex ports are not exposed, it is a best practice to always change the root/admin password.
