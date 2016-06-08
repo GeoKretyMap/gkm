@@ -1,0 +1,43 @@
+version: '2'
+services:
+  gkm-api-basex:
+    image: geokretymap/gkm-api-basex
+    container_name: gkm-api-basex
+    volumes:
+      - /srv/GKM/basex/data/BaseXData/:/srv/BaseXData/
+    environment:
+      - BASEX_JVM=-Xmx3072m
+    restart: always
+    network_mode: bridge
+
+
+  gkm-website:
+    image: geokretymap/gkm-website
+    container_name: gkm-website
+    volumes:
+      - /srv/GKM/geokretymap-website/:/data/geokretymap.org/
+    environment:
+      - GKM_API_URL="https://api.gkm.kumy.org"
+    network_mode: bridge
+
+
+  gkm-api-nginx:
+    container_name: gkm-api-nginx
+    image: geokretymap/gkm-api-nginx
+    links:
+      - gkm-api-basex:database
+    volumes:
+      - /srv/GKM/basex/data/BaseXData/:/var/www/html/basex/:ro
+      - /srv/GKM/geokretymap-website/:/var/www/html/geokretymap.org/:ro
+    restart: always
+    network_mode: bridge
+
+
+  #gkm-api-cron:
+  #  container_name: gkm-api-cron
+  #  image: geokretymap/gkm-api-cron
+  #  restart: never
+  #  links:
+  #    - reverseproxy:api.gkm.kumy.org
+  #  network_mode: bridge
+
