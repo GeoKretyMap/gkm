@@ -36,6 +36,8 @@ services:
   #gkm-api-cron:
   #  container_name: gkm-api-cron
   #  image: geokretymap/gkm-api-cron
+  #  volumes:
+  #    - /srv/GKM/basex/data/BaseXData/:/srv/BaseXData/
   #  restart: never
   #  links:
   #    - reverseproxy:api.gkm.kumy.org
